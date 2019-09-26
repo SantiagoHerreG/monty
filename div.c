@@ -7,19 +7,21 @@
 */
 void divi(stack_t **stack, unsigned int line_number)
 {
-	/*int div = 0;*/
-	stack_t *tmp;
+	int div = 0;
+	/*stack_t *tmp;*/
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		error_handling("div", line_number + 1);
-	else if ((*stack)->n == 0)
-		error_handling("divzero", line_number + 1);
-	else
-	{
-		tmp = (*stack)->next;
-		tmp->n = tmp->n / (*stack)->n;
-		pop(stack, line_number);
-		/*free(tmp);*/
-	}
 
+	if ((*stack)->n == 0)
+		error_handling("divzero", line_number + 1);
+
+	div = (*stack)->n;
+	(*stack)->next->n /= div;
+	pop(stack, line_number);
+
+		/*tmp = (*stack)->next;
+		tmp->n = tmp->n / (*stack)->n;
+		pop(stack, line_number);*/
+		/*free(tmp);*/
 }
