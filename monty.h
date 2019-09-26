@@ -10,7 +10,7 @@
 #include <fcntl.h>
 #include <ctype.h>
 
-extern int new_n[2];
+extern int new_n;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -48,7 +48,6 @@ void prepare_command(char **command, char **new_command);
 void exit_on_success(void);
 char **tokenize(char *str, char *delim, char **args);
 void execute(char **args);
-unsigned int format(char **opcode, unsigned int *i);
 void (*opcode_selector(char *, unsigned int))(stack_t **, unsigned int);
 void free_dlist(stack_t *stack);
 void free_array(char **opcodes);
@@ -70,5 +69,4 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
-void inst_error(char **args, stack_t **stack, char **opcode, unsigned int i);
 #endif /* MONTY_H */
