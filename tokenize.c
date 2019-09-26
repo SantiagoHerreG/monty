@@ -9,7 +9,7 @@
 
 char **tokenize(char *str, const char *delim, char **args)
 {
-	int i = 0;
+	int i = 0, j = 0;
 	char *token = NULL;
 
 	token = strtok(str, delim);
@@ -24,6 +24,8 @@ char **tokenize(char *str, const char *delim, char **args)
 			fprintf(stderr, "Error: malloc failed");
 			exit(EXIT_FAILURE);
 		}
+		for (j = 0; j < 100000; j++)
+			args[i][j] = '\0';
 		strcpy(args[i], token);
 		token = strtok(NULL, delim);
 		i++;
