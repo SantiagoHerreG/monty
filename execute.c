@@ -25,13 +25,14 @@ void execute(char **args)
 		{
 			if (!opcode[1])
 				error_handling("push", i + 1);
-			else if (!atoi(opcode[1]) && strcmp(opcode[1], "0"))
-				if (strcmp(opcode[1], "-0") && strcmp(opcode[1], "+0"))
-					error_handling("push", i + 1);
+			else if (check_push_arg(opcode[1]))
+				error_handling("push", i + 1);
 			new_n = atoi(opcode[1]);
 		}
 		if (opcode[0][0] == '#')
 		{
+			for (j = 0; opcode[j]; j++)
+				free(opcode[j]);
 			i++;
 			continue;
 		}

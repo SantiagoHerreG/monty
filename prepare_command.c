@@ -9,7 +9,7 @@
 
 void prepare_command(char **command, char **new_command)
 {
-	int i = 0, j = 0;
+	unsigned int i = 0, j = 0;
 
 	if (!*command)
 		return;

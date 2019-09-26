@@ -49,6 +49,7 @@ char **tokenize(char *str, const char *delim, char **args);
 void execute(char **args);
 void (*opcode_selector(char *, unsigned int))(stack_t **, unsigned int);
 void free_dlist(stack_t *stack);
+int check_push_arg(char *str);
 void error_handling(char *id, unsigned int line_number);
 void print_error(unsigned int line_number, char *error);
 void push(stack_t **stack, unsigned int line_number);
@@ -60,7 +61,9 @@ void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void divi(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 #endif /* MONTY_H */

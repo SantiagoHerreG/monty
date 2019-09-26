@@ -1,23 +1,23 @@
 #include "monty.h"
 
 /**
- * divi - divides the second top element by the top element of the stac
+ * mod - Computes the rest of the division between second top and top
  * @stack: double pointer to the first node
  * @line_number: line number in the file where the opcode is located
 */
-void divi(stack_t **stack, unsigned int line_number)
+void mod(stack_t **stack, unsigned int line_number)
 {
-	int div = 0;
+	int mod = 0;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		error_handling("div", line_number + 1);
+		error_handling("mod", line_number + 1);
 	else if ((*stack)->n == 0)
 		error_handling("divzero", line_number + 1);
 	else
 	{
-		div = (*stack)->next->n;
-		div /= (*stack)->n;
-		(*stack)->n = div;
+		mod = (*stack)->next->n;
+		mod %= (*stack)->n;
+		(*stack)->n = mod;
 		pop(stack, line_number);
 	}
 
