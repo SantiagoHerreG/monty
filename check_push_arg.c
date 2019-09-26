@@ -16,7 +16,6 @@ int check_push_arg(char *str)
 		i++, flag = 1;
 
 	for (; str[i]; i++)
-	{
 		if (i == 0  && (str[i] < '0' || str[i] > '9'))
 			return (1);
 		else if (flag && i == 1 && (str[i] < '0' || str[i] > '9'))
@@ -26,6 +25,5 @@ int check_push_arg(char *str)
 			str[i] = '\0';
 			break;
 		}
-	}
 	return (0);
 }

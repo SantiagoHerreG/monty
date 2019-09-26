@@ -20,14 +20,12 @@ void prepare_command(char **command, char **new_command)
 	{
 		(*new_command)[j++] = (*command)[i];
 		if ((*command)[i + 1])
-		{
 			if ((*command)[i] == '\n' && (*command)[i + 1] == '\n')
 			{
 				(*new_command)[j++] = ' ';
 				(*new_command)[j++] = '#';
 			}
-		}
 		i++;
 	}
-	new_command[j] = '\0';
+
 }

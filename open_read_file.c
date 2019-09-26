@@ -8,7 +8,7 @@
 void open_read_file(char *filename, char **args)
 {
 	int fd, read_char = 1;
-	char *command = NULL, *new_command = NULL, **tok_result = NULL;
+	char *command, *new_command, **tok_result;
 
 	args = args;
 
@@ -19,16 +19,17 @@ void open_read_file(char *filename, char **args)
 		exit(EXIT_FAILURE);
 	}
 
-	command = malloc(100000);
+	command = malloc(ARG_MAX * 100);
 	if (command == NULL)
 	{/* ERROR: Can't malloc */
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	read_char = read(fd, command, 99999);
+
+	read_char = read(fd, command, ARG_MAX * 100 - 1);
 	if (read_char == -1) /* ERROR: Can't read */
 		exit(EXIT_FAILURE);
-	new_command = malloc(100000);
+	new_command = malloc(ARG_MAX * 100);
 	if (new_command == NULL)
 	{/* ERROR: Can't malloc */
 		fprintf(stderr, "Error: malloc failed\n");
