@@ -33,15 +33,19 @@ void execute(char **args)
 		}
 		if (opcode[0][0] == '#')
 		{
-			free_array(opcode);
-			i++;
+			free_array(opcode), i++;
 			continue;
 		}
 		func = opcode_selector(opcode[0], i + 1);
+		if (!func)
+		{
+			free_array(args), free_dlist(stack);
+			fprintf(stderr, "L%u: unknown instruction %s\n", i + 1, opcode[0]);
+			free_array(opcode);
+			exit(EXIT_FAILURE);
+		}
 		func(&stack, i);
-		i++;
-		free_array(opcode);
+		i++, free_array(opcode);
 	}
-	free_array(args);
-	free_dlist(stack);
+	free_array(args), free_dlist(stack);
 }

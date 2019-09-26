@@ -31,13 +31,12 @@ unsigned int)
 
 	int i = 0;
 
+	line_number = line_number;
 	while (instructs[i].opcode != NULL)
 	{
 		if (!strcmp(instructs[i].opcode, op))
 			return (instructs[i].f);
 		i++;
 	}
-	/* ERROR: Unknown instruction error */
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op);
-	exit(EXIT_FAILURE);
+	return (NULL);
 }
