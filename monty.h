@@ -43,6 +43,7 @@ typedef struct instruction_s
 } instruction_t;
 
 void open_read_file(char *filename, char **args);
+void prepare_command(char **command, char **new_command);
 void exit_on_success(void);
 char **tokenize(char *str, const char *delim, char **args);
 void execute(char **args);
