@@ -15,14 +15,14 @@ void open_read_file(char *filename, char **args)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{/* ERROR: Can't open file */
-		fprintf(stderr, "Error: can't open %s", filename);
+		fprintf(stderr, "Error: can't open %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
 	command = malloc(ARG_MAX * 100);
 	if (command == NULL)
 	{/* ERROR: Can't malloc */
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -32,7 +32,7 @@ void open_read_file(char *filename, char **args)
 	new_command = malloc(ARG_MAX * 100);
 	if (new_command == NULL)
 	{/* ERROR: Can't malloc */
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	prepare_command(&command, &new_command);

@@ -21,7 +21,7 @@ char **tokenize(char *str, const char *delim, char **args)
 		args[i] = malloc(100000);
 		if (args[i] == NULL)
 		{/* ERROR: Can't malloc */
-			fprintf(stderr, "Error: malloc failed");
+			fprintf(stderr, "Error: malloc failed\n");
 			exit(EXIT_FAILURE);
 		}
 		strcpy(args[i], token);
