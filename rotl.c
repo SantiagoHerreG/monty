@@ -10,15 +10,16 @@ void rotl(stack_t **stack, unsigned int line_number)
 	stack_t *tmp, *cur;
 
 	line_number = line_number;
-	tmp = *stack;
-	cur = *stack;
-	if (!*stack || !(*stack)->next)
-		return;
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		tmp = *stack;
+		cur = *stack;
 
-	while (tmp->next)
-		tmp = tmp->next;
-	*stack = cur->next;
-	cur->prev = tmp;
-	tmp->next = cur;
-	cur->next = NULL;
+		while (tmp->next)
+			tmp = tmp->next;
+		*stack = cur->next;
+		cur->prev = tmp;
+		tmp->next = cur;
+		cur->next = NULL;
+	}
 }

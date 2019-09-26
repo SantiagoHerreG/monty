@@ -11,20 +11,20 @@ void rotr(stack_t **stack, unsigned int line_number)
 	stack_t *temp, *current;
 
 	line_number = line_number;
-	temp = *stack;
-	if (!*stack || !(*stack)->next)
-		return;
-
-	while (temp->next)
-		temp = temp->next;
-	*stack = temp;
-	temp->next = temp->prev;
-	temp->prev = NULL;
-	while (temp->next)
+	if (*stack != NULL && (*stack)->next != NULL)
 	{
-		current = temp->next;
-		current->next = current->prev;
-		current->prev = temp;
-		temp = temp->next;
+		temp = *stack;
+		while (temp->next)
+			temp = temp->next;
+		*stack = temp;
+		temp->next = temp->prev;
+		temp->prev = NULL;
+		while (temp->next)
+		{
+			current = temp->next;
+			current->next = current->prev;
+			current->prev = temp;
+			temp = temp->next;
+		}
 	}
 }
