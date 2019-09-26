@@ -13,6 +13,9 @@ void prepare_command(char **command, char **new_command)
 
 	if (!*command)
 		return;
+	if ((*command)[0] == '\n')
+		(*new_command)[j++] = '#';
+
 	while ((*command)[i])
 	{
 		(*new_command)[j++] = (*command)[i];

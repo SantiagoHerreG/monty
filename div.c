@@ -7,7 +7,7 @@
 */
 void divi(stack_t **stack, unsigned int line_number)
 {
-	int div = 0;
+	stack_t *tmp;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		error_handling("div", line_number + 1);
@@ -15,9 +15,8 @@ void divi(stack_t **stack, unsigned int line_number)
 		error_handling("divzero", line_number + 1);
 	else
 	{
-		div = (*stack)->next->n;
-		div /= (*stack)->n;
-		(*stack)->n = div;
+		tmp = (*stack)->next;
+		tmp->n = tmp->n / (*stack)->n;
 		pop(stack, line_number);
 	}
 

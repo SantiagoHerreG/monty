@@ -24,6 +24,7 @@ unsigned int)
 		{"mul", mul},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", rotl},
 		{"rotr", rotr},
 		{NULL, NULL}
 		};
