@@ -7,12 +7,12 @@
  * Return: pointer to the array of tokens
  */
 
-char **tokenize(char *str, const char *delim, char **args)
+char **tokenize(char *str, char *delim, char **args)
 {
 	int i = 0;
 	char *token = NULL;
 
-	token = strtok(str, delim);
+	token = _strtok(str, delim);
 	if (token == NULL)
 		return (NULL);
 
@@ -25,7 +25,7 @@ char **tokenize(char *str, const char *delim, char **args)
 			exit(EXIT_FAILURE);
 		}
 		strcpy(args[i], token);
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		i++;
 	}
 	args[i] = NULL;
