@@ -42,11 +42,10 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char *_strtok(char *base, char *delims);
 void open_read_file(char *filename, char **args);
 void prepare_command(char **command, char **new_command);
 void exit_on_success(void);
-char **tokenize(char *str, char *delim, char **args);
+char **tokenize(char *str, const char *delim, char **args);
 void execute(char **args);
 unsigned int format(char **opcode, unsigned int *i);
 void (*opcode_selector(char *, unsigned int))(stack_t **, unsigned int);
