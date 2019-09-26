@@ -1,6 +1,8 @@
 #include "monty.h"
-
-void exit_on_success()
+/**
+ * exit_on_success - Exits with success code
+**/
+void exit_on_success(void)
 {
 	exit(EXIT_SUCCESS);
 }

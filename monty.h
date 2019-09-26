@@ -10,6 +10,8 @@
 #include <fcntl.h>
 #include <ctype.h>
 
+extern int new_n;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -26,7 +28,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-extern stack_t *new_stack;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -45,7 +46,7 @@ void open_read_file(char *filename, char **args);
 void exit_on_success(void);
 char **tokenize(char *str, const char *delim, char **args);
 void execute(char **args);
-void (*opcode_selector(char *op, unsigned int line_number))(stack_t **, unsigned int);
+void (*opcode_selector(char *, unsigned int))(stack_t **, unsigned int);
 void free_dlist(stack_t *stack);
 void error_handling(char *id, unsigned int line_number);
 void print_error(unsigned int line_number, char *error);
@@ -61,5 +62,4 @@ void divi(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
-
 #endif /* MONTY_H */

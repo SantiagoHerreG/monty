@@ -3,10 +3,12 @@
 /**
  * opcode_selector - function that checks/returns the function to be performed
  * @op: argument passed to the program in the file
+ * @int: line_number is the line number where an error has been found
  * Return: pointer to a function that takes two args and returns void
  */
 
-void (*opcode_selector(char *op, unsigned int line_number))(stack_t **, unsigned int)
+void (*opcode_selector(char *op, unsigned int line_number))(stack_t **,
+unsigned int)
 {
 	instruction_t instructs[] = {
 		{"push", push},

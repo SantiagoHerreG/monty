@@ -1,6 +1,6 @@
 #include "monty.h"
 
-/*
+/**
  * print_error - prints an error
  * @line_number: Line number error can be found
  * @error: Error message
@@ -11,9 +11,9 @@ void print_error(unsigned int line_number, char *error)
 	exit(EXIT_FAILURE);
 }
 
-/*
+/**
  * error_handling - selects and error
- * @id: error identification name 
+ * @id: error identification name
  * @line_number: Line number error can be found
 */
 void error_handling(char *id, unsigned int line_number)
@@ -31,9 +31,9 @@ void error_handling(char *id, unsigned int line_number)
 	else if (!strcmp("sub", id))
 		print_error(line_number, "cant' sub, stack too short");
 	else if (!strcmp("div", id))
-		print_error(line_number, "cant' div, stack too short");	
+		print_error(line_number, "cant' div, stack too short");
 	else if (!strcmp("divzero", id))
-		print_error(line_number, "division by zero");	
+		print_error(line_number, "division by zero");
 	else if (!strcmp("mul", id))
 		print_error(line_number, "cant' mul, stack too short");
 }

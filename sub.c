@@ -20,7 +20,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	else
 	{
 		temp = *stack;
-		sub = -(*stack)->n;
+		sub = -((*stack)->n);
 		*stack = (*stack)->next;
 		sub += (*stack)->n;
 		(*stack)->n = sub;

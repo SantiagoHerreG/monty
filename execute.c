@@ -1,5 +1,6 @@
 #include "monty.h"
-stack_t *new_stack;
+
+int new_n;
 /**
  * execute - function that executes the commands read
  * @args: array of arguments by lines
@@ -9,26 +10,25 @@ void execute(char **args)
 {
 	void (*func)(stack_t **, unsigned int);
 	unsigned int i = 0, j = 0;
-	char *opcode[500];
+	char *opcode[500], **tok_res;
 	stack_t *stack = NULL;
-
-	new_stack = malloc(sizeof(stack_t));
-	if (new_stack == NULL)
-	{/* ERROR: Can't malloc */
-		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
 
 	while (args[i])
 	{
-		tokenize(args[i], " ", opcode);
+		tok_res = tokenize(args[i], " ", opcode);
+		if (!tok_res)
+		{
+			i++;
+			continue;
+		}
 		if (!strcmp("push", opcode[0]))
 		{
 			if (!opcode[1])
 				error_handling("push", i + 1);
 			else if (!atoi(opcode[1]) && strcmp(opcode[1], "0"))
-				error_handling("push", i + 1);
-			new_stack->n = atoi(opcode[1]);
+				if (strcmp(opcode[1], "-0") && strcmp(opcode[1], "+0"))
+					error_handling("push", i + 1);
+			new_n = atoi(opcode[1]);
 		}
 		if (opcode[0][0] == '#')
 		{
@@ -44,5 +44,4 @@ void execute(char **args)
 	for (j = 0; args[j]; j++)
 		free(args[j]);
 	free_dlist(stack);
-	free(new_stack);
 }

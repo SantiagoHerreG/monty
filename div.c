@@ -10,7 +10,7 @@ void divi(stack_t **stack, unsigned int line_number)
 	int div = 0;
 	stack_t *tmp;
 
-	if(*stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		error_handling("div", line_number + 1);
 	else if ((*stack)->n == 0)
 		error_handling("divzero", line_number + 1);

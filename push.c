@@ -1,5 +1,6 @@
 #include "monty.h"
-stack_t *new_stack;
+
+int new_n;
 /**
  * push - function that executes the push opcode, adds a data to the stack
  * @stack: first node of the linked list
@@ -11,9 +12,14 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new_node;
 
 	new_node = malloc(sizeof(stack_t));
+	if (!new_node)
+	{/* ERROR: Can't malloc */
+		fprintf(stderr, "Error: malloc failed");
+		exit(EXIT_FAILURE);
+	}
 
 	line_number =  line_number;
-	new_node->n = new_stack->n;
+	new_node->n = new_n;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	if (*stack == NULL)
