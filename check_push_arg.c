@@ -7,13 +7,17 @@
 
 int check_push_arg(char *str)
 {
-	int i = 0;
+	int i = 0, flag = 0;
 
 	if (str[i] == '-' || str[i] == '+')
-		i++;
+		i++, flag = 1;
 
 	for (; str[i]; i++)
-		if (str[i] < '0' || str[i] > '9')
+		if (i == 0  && (str[i] < '0' || str[i] > '9'))
 			return (1);
+		else if (flag && i == 1 && (str[i] < '0' || str[i] > '9'))
+			return (1);
+		else if (str[i] < '0' || str[i] > '9')
+			str[i] = '\0';
 	return (0);
 }
