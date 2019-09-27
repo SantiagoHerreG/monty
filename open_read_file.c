@@ -37,7 +37,7 @@ void open_read_file(char *filename, char **args)
 	}
 	prepare_command(&command, &new_command);
 
-	tok_result = tokenize(new_command, "\n\t", args);
+	tok_result = tokenize(new_command, "\n", args);
 	free(new_command);
 	free(command);
 	if (!tok_result)
