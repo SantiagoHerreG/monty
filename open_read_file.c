@@ -7,12 +7,10 @@
  */
 void open_read_file(char *filename, char **args)
 {
-	int fd, read_char = 1;
+	int fd, read_char = 1, close_res = 0;
 	char *command, *new_command, **tok_result;
 
-	args = args;
-
-	fd = open(filename, O_RDONLY);
+	args = args, fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{/* ERROR: Can't open file */
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
@@ -36,10 +34,14 @@ void open_read_file(char *filename, char **args)
 		exit(EXIT_FAILURE);
 	}
 	prepare_command(&command, &new_command);
-
+	close_res = close(fd);
+	if (close_fd)
+	{
+		fprintf(stderr, "Error: Can't close file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
 	tok_result = tokenize(new_command, "\n", args);
-	free(new_command);
-	free(command);
+	free(new_command), free(command);
 	if (!tok_result)
 		exit_on_success();
 }
