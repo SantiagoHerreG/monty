@@ -35,7 +35,7 @@ void open_read_file(char *filename, char **args)
 	}
 	prepare_command(&command, &new_command);
 	close_res = close(fd);
-	if (close_fd)
+	if (close_res)
 	{
 		fprintf(stderr, "Error: Can't close file %s\n", filename);
 		exit(EXIT_FAILURE);
