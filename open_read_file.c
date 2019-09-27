@@ -7,7 +7,7 @@
  */
 void open_read_file(char *filename, char **args)
 {
-	int fd, read_char = 1, close_res = 0;
+	int fd, read_char = 1, i = 0;
 	char *command, *new_command, **tok_result;
 
 	args = args, fd = open(filename, O_RDONLY);
@@ -23,7 +23,8 @@ void open_read_file(char *filename, char **args)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-
+	for (i = 0; i < ARG_MAX * 100; i++)
+		command[i] = '\0';
 	read_char = read(fd, command, ARG_MAX * 100 - 1);
 	if (read_char == -1) /* ERROR: Can't read */
 		exit(EXIT_FAILURE);
@@ -33,13 +34,10 @@ void open_read_file(char *filename, char **args)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	for (i = 0; i < ARG_MAX * 100; i++)
+		new_command[i] = '\0';
 	prepare_command(&command, &new_command);
-	close_res = close(fd);
-	if (close_res)
-	{
-		fprintf(stderr, "Error: Can't close file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
+	close(fd);
 	tok_result = tokenize(new_command, "\n", args);
 	free(new_command), free(command);
 	if (!tok_result)

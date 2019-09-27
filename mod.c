@@ -7,7 +7,7 @@
 */
 void mod(stack_t **stack, unsigned int line_number)
 {
-	int mod = 0;
+	stack_t *tmp;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		error_handling("mod", line_number + 1);
@@ -15,9 +15,8 @@ void mod(stack_t **stack, unsigned int line_number)
 		error_handling("divzero", line_number + 1);
 	else
 	{
-		mod = (*stack)->next->n;
-		mod %= (*stack)->n;
-		(*stack)->n = mod;
+		tmp = (*stack)->next;
+		tmp->n = tmp->n % (*stack)->n;
 		pop(stack, line_number);
 	}
 
