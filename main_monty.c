@@ -8,7 +8,7 @@
 */
 int main(int argc, char **argv)
 {
-	char *args[1000];
+	char *args[10000];
 
 	if (argc != 2)
 	{/* ERROR: When no file name given or more than 1 arg */

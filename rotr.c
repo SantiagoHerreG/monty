@@ -1,30 +1,33 @@
 #include "monty.h"
+
 /**
- * rotr - modifies the stack so the last element becomes head
+ * rotr - rotates the stack to the top
  * @stack: double pointer to the first element in stack
  * @line_number: line number of the instruction in the file
- * Return: void
  */
-
 void rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp, *current;
+	stack_t *tmp, *current;
 
 	line_number = line_number;
 	if (*stack != NULL && (*stack)->next != NULL)
 	{
-		temp = *stack;
-		while (temp->next)
-			temp = temp->next;
-		*stack = temp;
-		temp->next = temp->prev;
-		temp->prev = NULL;
-		while (temp->next)
+		tmp = *stack;
+		current = *stack;
+
+		if (!tmp->next->next)
 		{
-			current = temp->next;
-			current->next = current->prev;
-			current->prev = temp;
-			temp = temp->next;
+			swap(stack, line_number);
+			return;
 		}
+
+		while (tmp->next && tmp->next->next)
+			tmp = tmp->next;
+		current = tmp->next;
+		tmp->next = NULL;
+		current->prev = NULL;
+		current->next = *stack;
+		(*stack)->prev = current;
+		*stack = current;
 	}
 }
